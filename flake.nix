@@ -65,6 +65,7 @@
               -X github.com/cosmos/cosmos-sdk/version.Name=centauri
               -X github.com/cosmos/cosmos-sdk/version.AppName=${pname}
               -X github.com/cosmos/cosmos-sdk/version.Version=${version}
+              -X github.com/cosmos/cosmos-sdk/version.Commit="${self'.rev or self'.dirtyRev or "dirty"}""
               -X github.com/cometbft/cometbft/version.TMCoreSemVer="v0.37.2"
             '';
           };
