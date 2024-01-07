@@ -54,16 +54,16 @@
             pname = "centaurid";
             version = "v7.0.0";
             src = ./.;
-            subPackages = ["cmd/centaurid"];
+            subPackages = ["cmd/${pname}"];
             modules = ./gomod2nix.toml;
             preFixup = ''
-              ${cosmosLib.wasmdPreFixupPhase libwasmvm "centaurid"}
+              ${cosmosLib.wasmdPreFixupPhase libwasmvm pname}
             '';
             checkPhase = "true";
             buildInputs = [libwasmvm];
             ldflags = ''
               -X github.com/cosmos/cosmos-sdk/version.Name=centauri
-              -X github.com/cosmos/cosmos-sdk/version.AppName=centaurid
+              -X github.com/cosmos/cosmos-sdk/version.AppName=${pname}
               -X github.com/cosmos/cosmos-sdk/version.Version=${version}
               -X github.com/cometbft/cometbft/version.TMCoreSemVer="v0.37.2"
             '';
